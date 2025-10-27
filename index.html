@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Portfolio</title>
+    <title>Miguel - Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -18,36 +18,35 @@
             color: #ffffff;
             min-height: 100vh;
             overflow-x: hidden;
+            padding: 3rem 2rem;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
         }
 
-        .profile-section {
-            text-align: center;
-            margin-bottom: 4rem;
+        .hero-section {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            margin-bottom: 3rem;
             animation: fadeInUp 1s ease-out;
         }
 
+        .profile-image-container {
+            flex-shrink: 0;
+            position: relative;
+        }
+
         .profile-image {
-            width: 180px;
-            height: 180px;
+            width: 220px;
+            height: 220px;
             border-radius: 50%;
             background: linear-gradient(135deg, #ffa900, #991030);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 2rem;
-            font-size: 4rem;
-            color: #2d2e32;
             box-shadow: 0 20px 60px rgba(255, 169, 0, 0.3);
             animation: float 3s ease-in-out infinite;
             position: relative;
@@ -74,46 +73,95 @@
             z-index: 1;
         }
 
+        .bio-content {
+            flex: 1;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
         h1 {
             font-size: 3.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             background: linear-gradient(135deg, #ffa900, #991030);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: fadeInUp 1s ease-out 0.3s both;
         }
 
         .tagline {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             color: #a0a0a0;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease-out 0.5s both;
+            margin-bottom: 1.5rem;
         }
 
-        .bio {
+        .bio-text {
             font-size: 1.1rem;
             color: #d0d0d0;
-            max-width: 600px;
-            line-height: 1.6;
-            margin: 0 auto;
-            animation: fadeInUp 1s ease-out 0.7s both;
+            line-height: 1.8;
+            margin-bottom: 2rem;
         }
 
-        .social-links {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            max-width: 900px;
+        .social-icons {
+            display: flex;
+            gap: 1.5rem;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .social-icon-link {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        .social-icon-link::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(255, 169, 0, 0.2), rgba(153, 16, 48, 0.2));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .social-icon-link:hover::before {
+            opacity: 1;
+        }
+
+        .social-icon-link:hover {
+            transform: translateY(-5px) scale(1.1);
+            border-color: #ffa900;
+            box-shadow: 0 10px 30px rgba(255, 169, 0, 0.3);
+        }
+
+        .social-icon-link i {
+            font-size: 1.8rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .instagram i { color: #E4405F; }
+        .linkedin i { color: #0077B5; }
+        .github i { color: #ffffff; }
+        .youtube i { color: #FF0000; }
+
+        .divider {
             width: 100%;
-            animation: fadeInUp 1s ease-out 0.9s both;
-            margin-bottom: 5rem;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ffa900, #991030, transparent);
+            margin: 3rem 0;
+            animation: fadeInUp 1s ease-out 0.8s both;
         }
 
         .video-section {
-            width: 100%;
-            max-width: 1200px;
-            animation: fadeInUp 1s ease-out 1.1s both;
+            animation: fadeInUp 1s ease-out 1s both;
         }
 
         .section-title {
@@ -158,13 +206,13 @@
         .video-container {
             position: relative;
             width: 100%;
-            padding-bottom: 177.78%; /* 9:16 aspect ratio for reels */
+            padding-bottom: 177.78%;
             background: #000;
             overflow: hidden;
         }
 
         .video-container.landscape {
-            padding-bottom: 56.25%; /* 16:9 aspect ratio for landscape videos */
+            padding-bottom: 56.25%;
         }
 
         .video-container iframe,
@@ -207,82 +255,6 @@
             color: #ffa900;
         }
 
-        .social-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid transparent;
-            border-radius: 20px;
-            padding: 2.5rem 2rem;
-            text-decoration: none;
-            color: #ffffff;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-        }
-
-        .social-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(255, 169, 0, 0.1), rgba(153, 16, 48, 0.1));
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            z-index: 0;
-        }
-
-        .social-card:hover::before {
-            opacity: 1;
-        }
-
-        .social-card:hover {
-            transform: translateY(-10px);
-            border-color: #ffa900;
-            box-shadow: 0 20px 40px rgba(255, 169, 0, 0.2);
-        }
-
-        .social-card-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .social-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            display: inline-block;
-            transition: all 0.4s ease;
-        }
-
-        .social-card:hover .social-icon {
-            transform: scale(1.2) rotate(5deg);
-        }
-
-        .instagram .social-icon { color: #E4405F; }
-        .linkedin .social-icon { color: #0077B5; }
-        .github .social-icon { color: #ffffff; }
-        .youtube .social-icon { color: #FF0000; }
-
-        .social-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .social-description {
-            color: #a0a0a0;
-            font-size: 0.95rem;
-        }
-
-        .accent-line {
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(90deg, #ffa900, #991030);
-            margin: 1.5rem auto;
-            border-radius: 2px;
-        }
-
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -316,8 +288,19 @@
 
         /* Mobile Responsiveness */
         @media (max-width: 768px) {
-            .container {
-                padding: 1.5rem;
+            body {
+                padding: 2rem 1.5rem;
+            }
+
+            .hero-section {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .profile-image {
+                width: 180px;
+                height: 180px;
             }
 
             h1 {
@@ -325,34 +308,15 @@
             }
 
             .tagline {
-                font-size: 1.1rem;
+                font-size: 1.2rem;
             }
 
-            .bio {
+            .bio-text {
                 font-size: 1rem;
             }
 
-            .profile-image {
-                width: 140px;
-                height: 140px;
-                font-size: 3rem;
-            }
-
-            .social-links {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .social-card {
-                padding: 2rem 1.5rem;
-            }
-
-            .social-icon {
-                font-size: 2.5rem;
-            }
-
-            .social-title {
-                font-size: 1.3rem;
+            .social-icons {
+                justify-content: center;
             }
 
             .section-title {
@@ -370,66 +334,62 @@
             }
 
             .profile-image {
-                width: 120px;
-                height: 120px;
-                font-size: 2.5rem;
+                width: 150px;
+                height: 150px;
+            }
+
+            .social-icon-link {
+                width: 55px;
+                height: 55px;
+            }
+
+            .social-icon-link i {
+                font-size: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="profile-section">
-            <div class="profile-image">
-                <img src="pfp.webp" alt="Miguel's profile photo">
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <div class="profile-image-container">
+                <div class="profile-image">
+                    <img src="pfp.webp" alt="Miguel's profile photo">
+                </div>
             </div>
-            <h1>Wassup, I'm Miguel</h1>
-            <div class="accent-line"></div>
-            <p class="tagline">Creative and Enthusiastic Undergraduate</p>
-            <p class="bio">
-                Passionate about creating exceptional digital experiences. 
-                Connect with me to explore my work and collaborate on exciting projects.
-            </p>
+
+            <div class="bio-content">
+                <h1>Wassup, I'm Miguel</h1>
+                <p class="tagline">Creative and Enthusiastic Undergraduate</p>
+                <p class="bio-text">
+                    Passionate about creating exceptional digital experiences. 
+                    I'm constantly exploring new technologies and pushing the boundaries of what's possible. 
+                    Connect with me to explore my work and collaborate on exciting projects.
+                </p>
+
+                <div class="social-icons">
+                    <a href="https://instagram.com/iimxgz" class="social-icon-link instagram" target="_blank" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/migzgomez" class="social-icon-link linkedin" target="_blank" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/Mxgzie" class="social-icon-link github" target="_blank" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://youtube.com/@Mxgzie" class="social-icon-link youtube" target="_blank" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
         </div>
 
-        <div class="social-links">
-            <a href="https://instagram.com/iimxgz" class="social-card instagram" target="_blank">
-                <div class="social-card-content">
-                    <i class="fab fa-instagram social-icon"></i>
-                    <div class="social-title">Instagram</div>
-                    <div class="social-description">Follow my creative journey</div>
-                </div>
-            </a>
-
-            <a href="https://linkedin.com/in/yourusername" class="social-card linkedin" target="_blank">
-                <div class="social-card-content">
-                    <i class="fab fa-linkedin social-icon"></i>
-                    <div class="social-title">LinkedIn</div>
-                    <div class="social-description">Connect professionally</div>
-                </div>
-            </a>
-
-            <a href="https://github.com/yourusername" class="social-card github" target="_blank">
-                <div class="social-card-content">
-                    <i class="fab fa-github social-icon"></i>
-                    <div class="social-title">GitHub</div>
-                    <div class="social-description">Explore my code</div>
-                </div>
-            </a>
-
-            <a href="https://youtube.com/@yourusername" class="social-card youtube" target="_blank">
-                <div class="social-card-content">
-                    <i class="fab fa-youtube social-icon"></i>
-                    <div class="social-title">YouTube</div>
-                    <div class="social-description">Watch my content</div>
-                </div>
-            </a>
-        </div>
+        <div class="divider"></div>
 
         <!-- Video Section -->
         <div class="video-section">
             <h2 class="section-title">Latest Content</h2>
-            <div class="accent-line"></div>
             <p class="section-subtitle">Check out my recent videos and reels</p>
 
             <div class="video-grid">
@@ -492,7 +452,7 @@
                     </div>
                 </div>
 
-                <!-- YouTube Video (if you want to include) -->
+                <!-- YouTube Video -->
                 <div class="video-card">
                     <div class="video-container landscape">
                         <iframe 
