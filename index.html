@@ -1,11 +1,320 @@
-<html>
-    <h1>
-        Wassup, I'm Miguel
-    </h1>
-    <body>
-        <a><p>Instagram</p></a>
-        <a><p>YouTube</p></a>
-        <a><p>LinkedIn</p></a>
-        <a><p>GitHub</p></a>
-    </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2d2e32 0%, #1a1b1e 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-section {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .profile-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffa900, #991030);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            font-size: 4rem;
+            color: #2d2e32;
+            box-shadow: 0 20px 60px rgba(255, 169, 0, 0.3);
+            animation: float 3s ease-in-out infinite;
+            position: relative;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .profile-image::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffa900, #991030);
+            opacity: 0.3;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffa900, #991030);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            color: #a0a0a0;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        .bio {
+            font-size: 1.1rem;
+            color: #d0d0d0;
+            max-width: 600px;
+            line-height: 1.6;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease-out 0.7s both;
+        }
+
+        .social-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 900px;
+            width: 100%;
+            animation: fadeInUp 1s ease-out 0.9s both;
+        }
+
+        .social-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid transparent;
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            text-decoration: none;
+            color: #ffffff;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .social-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 169, 0, 0.1), rgba(153, 16, 48, 0.1));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 0;
+        }
+
+        .social-card:hover::before {
+            opacity: 1;
+        }
+
+        .social-card:hover {
+            transform: translateY(-10px);
+            border-color: #ffa900;
+            box-shadow: 0 20px 40px rgba(255, 169, 0, 0.2);
+        }
+
+        .social-card-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .social-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            transition: all 0.4s ease;
+        }
+
+        .social-card:hover .social-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .instagram .social-icon { color: #E4405F; }
+        .linkedin .social-icon { color: #0077B5; }
+        .github .social-icon { color: #ffffff; }
+        .youtube .social-icon { color: #FF0000; }
+
+        .social-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .social-description {
+            color: #a0a0a0;
+            font-size: 0.95rem;
+        }
+
+        .accent-line {
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #ffa900, #991030);
+            margin: 1.5rem auto;
+            border-radius: 2px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.3;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.1;
+            }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .tagline {
+                font-size: 1.1rem;
+            }
+
+            .bio {
+                font-size: 1rem;
+            }
+
+            .profile-image {
+                width: 140px;
+                height: 140px;
+                font-size: 3rem;
+            }
+
+            .social-links {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .social-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .social-icon {
+                font-size: 2.5rem;
+            }
+
+            .social-title {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .profile-image {
+                width: 120px;
+                height: 120px;
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="profile-section">
+            <div class="profile-image">
+                <img src="pfp.webp" alt ="Miguel's Profile Photo">
+            </div>
+            <h1>Wassup, I'm Miguel</h1>
+            <div class="accent-line"></div>
+            <p class="tagline">Creative and Enthusiastic Undergraduate</p>
+            <p class="bio">
+                Passionate about creating exceptional digital experiences. 
+                Connect with me to explore my work and collaborate on exciting projects.
+            </p>
+        </div>
+
+        <div class="social-links">
+            <a href="https://instagram.com/iimxgz" class="social-card instagram" target="_blank">
+                <div class="social-card-content">
+                    <i class="fab fa-instagram social-icon"></i>
+                    <div class="social-title">Instagram</div>
+                    <div class="social-description">Follow my creative journey</div>
+                </div>
+            </a>
+
+            <a href="https://linkedin.com/in/migzgomez" class="social-card linkedin" target="_blank">
+                <div class="social-card-content">
+                    <i class="fab fa-linkedin social-icon"></i>
+                    <div class="social-title">LinkedIn</div>
+                    <div class="social-description">Connect professionally</div>
+                </div>
+            </a>
+
+            <a href="https://github.com/Mxgzie" class="social-card github" target="_blank">
+                <div class="social-card-content">
+                    <i class="fab fa-github social-icon"></i>
+                    <div class="social-title">GitHub</div>
+                    <div class="social-description">Explore my code</div>
+                </div>
+            </a>
+
+            <a href="https://youtube.com/@Mxgzie" class="social-card youtube" target="_blank">
+                <div class="social-card-content">
+                    <i class="fab fa-youtube social-icon"></i>
+                    <div class="social-title">YouTube</div>
+                    <div class="social-description">Watch my content</div>
+                </div>
+            </a>
+        </div>
+    </div>
+</body>
 </html>
