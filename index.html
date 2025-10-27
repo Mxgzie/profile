@@ -183,8 +183,9 @@
 
         .video-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
+            justify-items: center;
         }
 
         .video-card {
@@ -195,6 +196,8 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             backdrop-filter: blur(10px);
+            max-width: 350px;
+            width: 100%;
         }
 
         .video-card:hover {
@@ -206,17 +209,12 @@
         .video-container {
             position: relative;
             width: 100%;
-            padding-bottom: 177.78%;
+            height: 600px;
             background: #000;
             overflow: hidden;
         }
 
-        .video-container.landscape {
-            padding-bottom: 56.25%;
-        }
-
-        .video-container iframe,
-        .video-container video {
+        .video-container iframe {
             position: absolute;
             top: 0;
             left: 0;
@@ -390,22 +388,22 @@
         <!-- Video Section -->
         <div class="video-section">
             <h2 class="section-title">Latest Content</h2>
-            <p class="section-subtitle">Check out my recent videos and reels</p>
+            <p class="section-subtitle">Check out my recent Instagram reels</p>
 
             <div class="video-grid">
-                <!-- Instagram Reel Embed -->
+                <!-- Instagram Reel 1 -->
                 <div class="video-card">
                     <div class="video-container">
                         <iframe 
-                            src="https://www.instagram.com/reel/YOUR_REEL_ID/embed" 
+                            src="https://www.instagram.com/reel/DQNiqndDR3OKnZwpDCsiPWsD8y8lsqr4Q5whLY0/embed" 
                             allowfullscreen
                             loading="lazy">
                         </iframe>
                     </div>
                     <div class="video-info">
-                        <div class="video-title">Instagram Reel Title</div>
+                        <div class="video-title">A Day at UofT Mississauga</div>
                         <div class="video-description">
-                            Brief description of what this reel is about.
+                            Come along with me around campus on a random Wednesday
                         </div>
                         <div class="video-meta">
                             <span><i class="fab fa-instagram"></i> Instagram</span>
@@ -413,26 +411,7 @@
                     </div>
                 </div>
 
-                <!-- Local Video File -->
-                <div class="video-card">
-                    <div class="video-container landscape">
-                        <video controls poster="thumbnail.jpg">
-                            <source src="your-video.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="video-info">
-                        <div class="video-title">Video Blog Title</div>
-                        <div class="video-description">
-                            Description of your video blog content.
-                        </div>
-                        <div class="video-meta">
-                            <span><i class="fas fa-video"></i> Video Blog</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Another Instagram Reel -->
+                <!-- Instagram Reel 2 -->
                 <div class="video-card">
                     <div class="video-container">
                         <iframe 
@@ -442,9 +421,9 @@
                         </iframe>
                     </div>
                     <div class="video-info">
-                        <div class="video-title">Another Reel</div>
+                        <div class="video-title">Your Reel Title</div>
                         <div class="video-description">
-                            Another amazing piece of content.
+                            Description of your reel content.
                         </div>
                         <div class="video-meta">
                             <span><i class="fab fa-instagram"></i> Instagram</span>
@@ -452,22 +431,22 @@
                     </div>
                 </div>
 
-                <!-- YouTube Video -->
+                <!-- Instagram Reel 3 -->
                 <div class="video-card">
-                    <div class="video-container landscape">
+                    <div class="video-container">
                         <iframe 
-                            src="https://www.youtube.com/embed/YOUR_VIDEO_ID" 
+                            src="https://www.instagram.com/reel/YOUR_REEL_ID_3/embed" 
                             allowfullscreen
                             loading="lazy">
                         </iframe>
                     </div>
                     <div class="video-info">
-                        <div class="video-title">YouTube Video Title</div>
+                        <div class="video-title">Another Reel Title</div>
                         <div class="video-description">
-                            Your YouTube video description.
+                            Another amazing piece of content.
                         </div>
                         <div class="video-meta">
-                            <span><i class="fab fa-youtube"></i> YouTube</span>
+                            <span><i class="fab fa-instagram"></i> Instagram</span>
                         </div>
                     </div>
                 </div>
